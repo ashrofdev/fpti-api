@@ -17,7 +17,6 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/users', (req, res)=>{
-    res.json(users)
     db.select('*').from('users').then(data => {
         res.json(data)
     })
