@@ -1,0 +1,19 @@
+{
+  "name": "fpt-server",
+  "version": "1.0.0",
+  "description": "server for the freedom project tribe app",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "Ashraf",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.19.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
