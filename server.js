@@ -12,16 +12,18 @@ const db = knex({
 })
 
 const app = express()
+let test = []
 
 app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/users', (req, res)=>{
     db.select('*').from('users').then(data => {
-        res.json(data)
+        res.json(test)
     })
 })
 app.post('/submit-change', (req, res) => {
+    test.push(req.body)
     db.update('users').set('m1', '=', req.body.m1)
     .where('userid', '=', req.body.id).then(hope=>{
         res.json(hope)
