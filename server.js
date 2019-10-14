@@ -19,8 +19,12 @@ app.use(bodyParser.json())
 
 app.get('/users', (req, res)=>{
     db.select('*').from('users').then(data => {
-        res.json(test)
         res.json(data)
+    })
+})
+app.get('/test', (req, res)=>{
+    db.select('*').from('users').then(data => {
+        res.json(test)
     })
 })
 app.post('/submit-change', (req, res) => {
