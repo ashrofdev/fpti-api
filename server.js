@@ -23,9 +23,7 @@ app.get('/users', (req, res)=>{
     })
 })
 app.get('/test', (req, res)=>{
-    db.select('*').from('users').then(data => {
         res.json(test)
-    })
 })
 app.post('/submit-change', (req, res) => {
     test.push(req.body)
