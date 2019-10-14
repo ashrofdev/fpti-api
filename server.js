@@ -27,7 +27,7 @@ app.get('/test', (req, res)=>{
 })
 app.post('/submit-change', (req, res) => {
     test.push(req.body)
-    db.update('users').where('userid', '=', 'NG139708')
+    db.select('*').from('users').where('userid', '=', 'NG139708')
     .set('m1', '=', 'req.body.m1')
     .then(hope=>{
         res.json(hope)
