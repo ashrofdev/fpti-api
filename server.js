@@ -22,14 +22,10 @@ app.get('/users', (req, res)=>{
         res.json(data)
     })
 })
-app.get('/test', (req, res)=>{
-        res.json(test)
-})
 app.post('/submit-change', (req, res) => {
     test.push(req.body)
-    db.select('*').from('users').where('userid', '=', 'NG139708')
-    .set('m1', '=', 'req.body.m1')
-    .then(hope=>{
+    db.update('users').set(`m1 = ${req.body.m1}`)
+    .where(`userid = ${req.body.id}`).then(hope=>{
         res.json(hope)
     }).catch((errr)=>{res.json('failed.......')})
 })
