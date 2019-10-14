@@ -22,13 +22,10 @@ app.get('/users', (req, res)=>{
     })
 })
 app.post('/submit-change', (req, res) => {
-    const sql = `'UPDATE users SET mi = ${req.body.m1} WHERE userid = ${req.body.id}`
-    db.query(sql, (err, result)=>{
-        if (err) {
-            res.json(err)
-        }
-        res.json(result)
-    })
+    db.update('users').set('m1', '=', req.body.m1)
+    .where('userid', '=', req.body.id).then(hope=>{
+        res.json(hope)
+    }).catch((errr)=>{res.json('failed.......')})
 })
 
 app.listen(process.env.PORT)
