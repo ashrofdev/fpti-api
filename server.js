@@ -21,5 +21,12 @@ app.get('/users', (req, res)=>{
         res.json(data)
     })
 })
+app.post('/submit-change', (req, res) => {
+    const { month } = req.body
+    db.update('users').set('m1', '=', month.m1)
+    .where('userid', '=', month.id).then(hope=>{
+        res.json(hope)
+    }).catch((errr)=>{res.json('failed.......')})
+})
 
 app.listen(process.env.PORT)
