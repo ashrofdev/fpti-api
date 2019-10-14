@@ -24,10 +24,8 @@ app.get('/users', (req, res)=>{
 })
 app.post('/submit-change', (req, res) => {
     test.push(req.body)
-    db.update('users').set(`m1 = ${req.body.m1}`)
-    .where(`userid = ${req.body.id}`).then(hope=>{
-        res.json(hope)
-    }).catch((errr)=>{res.json('failed.......')})
+    db.update('users').where('userid', '=', req.body.id)
+    .stream('m1', '=', req.body.m1)
 })
 
 app.listen(process.env.PORT)
