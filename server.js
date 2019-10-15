@@ -12,7 +12,6 @@ const db = knex({
 })
 
 const app = express()
-let test = []
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -23,13 +22,8 @@ app.get('/users', (req, res)=>{
     })
 })
 app.post('/submit-change', (req, res) => {
-    test.push(req.body)
-    db.update('users').set('m1', '=', req.body.m1)
-    .where('m2', '=', 'false').then((d)=>{
-        res.json(d)
-    }).catch((err)=>{
-        res.json('error occured')
-    })
+    db.where({ userid: req.body.id })
+    .update({ m1: req.body.m1 })
 })
 
 app.listen(process.env.PORT)
