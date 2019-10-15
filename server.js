@@ -25,7 +25,11 @@ app.get('/users', (req, res)=>{
 app.post('/submit-change', (req, res) => {
     test.push(req.body)
     db.update('users').where('userid', '=', req.body.id)
-    .set('m1', '=', req.body.m1)
+    .set('m1', '=', req.body.m1).then((d)=>{
+        res.json(d)
+    }).catch((err)=>{
+        res.json('error occured')
+    })
 })
 
 app.listen(process.env.PORT)
