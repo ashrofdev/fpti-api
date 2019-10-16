@@ -23,7 +23,9 @@ app.get('/users', (req, res)=>{
 })
 app.post('/submit-change', (req, res) => {
     db('users').where('userid', '=', req.body.id)
-    .update({ m1: req.body.m1 })
+    .update({ m1: req.body.m1 }).then(user=>{
+        res.json(user)
+    }).catch(err=> res.json('unable to register'))
 })
 
 app.listen(process.env.PORT)
