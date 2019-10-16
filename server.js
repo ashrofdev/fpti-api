@@ -13,8 +13,8 @@ const db = knex({
 
 const app = express()
 
-app.use(cors())
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get('/users', (req, res)=>{
     db.select('*').from('users').then(data => {
