@@ -22,7 +22,7 @@ app.get('/users', (req, res)=>{
     })
 })
 app.post('/submit-change', (req, res) => {
-    db.where('userid', '=', req.body.id)
+    db('users').where('userid', '=', req.body.id)
     .update({ m1: req.body.m1 })
 })
 
