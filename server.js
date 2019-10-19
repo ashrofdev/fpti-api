@@ -34,5 +34,14 @@ app.get('/password', (req, res)=>{
         res.json(data)
     })
 })
+app.post('/ch-password', (req, res) => {
+    db('password').where('password', '=', req.body.old)
+    .update({password: req.body.new})
+    .then((pass)=>{
+        res.json(pass)
+    }).catch(()=>{
+        res.json('unable to change password')
+    })
+})
 
 app.listen(process.env.PORT)
