@@ -35,8 +35,8 @@ app.get('/password', (req, res)=>{
     })
 })
 app.post('/ch-password', (req, res) => {
-    db('password')
-    .update({password: req.body.new})
+    db('password').where('pass', '=', req.body.old)
+    .update({pass: req.body.new})
     .then((pass)=>{
         res.json(pass)
     }).catch(()=>{
