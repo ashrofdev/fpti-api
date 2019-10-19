@@ -29,4 +29,10 @@ app.post('/submit-change', (req, res) => {
     }).catch(err=> res.json('unable to register'))
 })
 
+app.get('/password', (req, res)=>{
+    db.select('*').from('password').then(data => {
+        res.json(data)
+    })
+})
+
 app.listen(process.env.PORT)
